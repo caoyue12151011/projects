@@ -1,0 +1,13 @@
+# from https://iesr.jnu.edu.cn/2020/0610/c17144a490625/page.htm
+# the value in the last row actually mean 20000+
+Upper_bound     percent
+------------------------
+500     15.81
+1000    23.29
+1500    17.42
+2000    12.33
+3000    14.81
+5000    11.21
+10000   4.52
+20000   .56
+30000   .05

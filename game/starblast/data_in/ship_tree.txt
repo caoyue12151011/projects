@@ -1,0 +1,30 @@
+Ship;Leaves
+---------------------------------------------------------------
+Fly;Delta-Fighter,Trident
+Delta-Fighter;Pulse-Fighter,Side-Fighter
+Trident;Shadow X-1,Y-Defender
+Pulse-Fighter;Vanguard,Mercury
+Side-Fighter;X-Warrior,Side-Interceptor
+Shadow X-1;Side-Interceptor,Pioneer
+Y-Defender;Pioneer,Crusader
+Vanguard;U-Sniper,FuryStar
+Mercury;FuryStar,T-Warrior
+X-Warrior;T-Warrior,Aetos
+Side-Interceptor;Aetos,Shadow X-2
+Pioneer;Shadow X-2,Howler
+Crusader;Howler,Bat-Defender
+U-Sniper;Advanced-Fighter,Scorpion
+FuryStar;Scorpion,Marauder
+T-Warrior;Marauder,Condor
+Aetos;Condor,A-Speedster
+Shadow X-2;A-Speedster,Rock-Tower
+Howler;Rock-Tower,Barracuda
+Bat-Defender;Barracuda,O-Defender
+Advanced-Fighter;Odyssey,Shadow X-3
+Scorpion;Odyssey,Shadow X-3
+Marauder;Shadow X-3,Bastion
+Condor;Shadow X-3,Bastion
+A-Speedster;Shadow X-3,Bastion
+Rock-Tower;Shadow X-3,Bastion
+Barracuda;Bastion,Aries
+O-Defender;Bastion,Aries

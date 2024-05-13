@@ -1,0 +1,8 @@
+Dynasty	start	end
+-------------------
+Han	-202	220
+Tang	618	907
+Song	960	1279
+Yuan	1271	1388
+Ming	1368	1644
+Qing	1636	1912

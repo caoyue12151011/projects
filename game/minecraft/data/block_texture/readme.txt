@@ -1,0 +1,1 @@
+From https://mcasset.cloud/1.19/assets/minecraft.

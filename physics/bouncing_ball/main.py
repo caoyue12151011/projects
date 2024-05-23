@@ -297,7 +297,7 @@ plt.savefig(f'image/model_demo.pdf')
 plt.close()
 #'''
 
-''' animation 
+#''' animation 
 # parameters 
 t_f = sum(Ti[:3])
 fps = 30

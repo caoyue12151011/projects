@@ -7,6 +7,7 @@ import matplotlib
 import numpy as np 
 import matplotlib.pyplot as plt 
 from importlib import reload
+from matplotlib.widgets import Slider, Button
 
 sys.path.append('../../../module')
 from phunction import phunction
@@ -59,6 +60,74 @@ plt.xlabel('Blackbody temperature (K)')
 plt.yticks([])
 plt.tight_layout()
 plt.savefig('image/bb_color.pdf')
+plt.close()
+#'''
+
+''' dust color 
+# parameters
+lamda = np.linspace(360, 780, 421)
+T = np.linspace(500, 12200, 500)  # [K]
+beta = np.linspace(-2, 4, 300)
+lgN = 17.5
+Gamma = 100
+
+# figure parameters 
+figsize = (8, 5)
+fx_p = .2  # fraction of the plotting panel
+fy_p = .15
+fw_p = .75
+fh_p = .8
+fx_s = .05
+fy_s = .1
+fw_s = .05
+fh_s = .8
+
+# spectrum
+T = T[np.newaxis, ..., np.newaxis]  # (beta, T, lamda)
+beta = beta[..., np.newaxis, np.newaxis]  # (beta, T, lamda)
+I = 10**phunction.SED_dust(lamda/1e3, T, lgN, beta, Gamma)/lamda**2 
+    # dI/d(lamda)
+
+# RGB colors
+RGB = np.full((I.shape[0], I.shape[1], 3), np.nan)
+for i in range(I.shape[0]):
+    for j in range(I.shape[1]):
+        RGB[i,j] = phunction.SED2color(lamda, I[i,j])
+
+# plotting panel
+fig = plt.figure(figsize=figsize)
+ax = fig.add_axes([fx_p, fy_p, fw_p, fh_p])
+im = plt.imshow(RGB, extent=[T.min(), T.max(), beta.min(), beta.max()],
+                origin='lower', aspect='auto')
+plt.grid()
+plt.xlabel(r'$T\rm\ (K)$')
+plt.ylabel(r'$\beta$')
+
+# sliders 
+sld = Slider(ax=fig.add_axes([fx_s,fy_s,fw_s,fh_s]),
+             label=r'$\lg(N_{\rm H_2}/\rm cm^{-2})$',
+             valmin=15, valmax=25, valinit=lgN, orientation='vertical')
+
+# The function to be called anytime a slider's value changes
+def update(val):
+    # new slider values
+    lgN = sld.val
+
+    I = 10**phunction.SED_dust(lamda/1e3, T, lgN, beta, Gamma) / lamda**2
+
+    # RGB colors
+    RGB = np.full((I.shape[0], I.shape[1], 3), np.nan)
+    for i in range(I.shape[0]):
+        for j in range(I.shape[1]):
+            RGB[i,j] = phunction.SED2color(lamda, I[i,j])
+
+    # upload plots
+    im.set_data(RGB)
+    fig.canvas.draw_idle()
+
+# register the update function with each slider
+sld.on_changed(update)
+plt.savefig('image/dust_color.pdf')
 plt.close()
 #'''
 
